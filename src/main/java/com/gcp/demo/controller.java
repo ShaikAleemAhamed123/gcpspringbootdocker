@@ -12,6 +12,6 @@ public class controller {
     @GetMapping("/")
     @ResponseBody
     public String homeRoute(){
-        return "Hello World !";
+        return "Keep Calm...and Do Fruitful Work... Allah SWT indeed love those who are being patient";
     }
 }
