@@ -1,14 +1,14 @@
 # Use an appropriate base image with JDK 17
 FROM openjdk:17
 
-# Install Maven
-RUN apt-get update && apt-get install -y maven
-
-# Set working directory
+# Set the working directory
 WORKDIR /app
 
-# Copy the project files to the container
-COPY . .
+# Copy the JAR file from the previous build step
+COPY target/*.jar app.jar
 
-# Run Maven to build the project
-RUN mvn clean package
+# Expose the application port
+EXPOSE 8080
+
+# Command to run the application
+ENTRYPOINT ["java", "-jar", "app.jar"]
