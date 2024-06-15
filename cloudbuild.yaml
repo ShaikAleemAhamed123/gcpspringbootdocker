@@ -1,10 +1,13 @@
 steps:
-  # Step 1: Build the JAR file using Maven
-  - name: 'maven:3.6.3-jdk-11' # Use the appropriate Maven image and JDK version
+  # Step 1: Build the JAR file using a custom Docker image with JDK 17 and Maven
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'custom-maven-jdk17', '-f', 'Dockerfile.build', '.']
+
+  - name: 'custom-maven-jdk17'
     entrypoint: 'mvn'
     args: ['clean', 'package']
-  
-  # Step 2: Build the Docker image
+
+  # Step 2: Build the Docker image for the application
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'asia-south1-docker.pkg.dev/gcpspringbootdocker/gcpspringboot/gcpspringbootdocker:latest', '.']
 
