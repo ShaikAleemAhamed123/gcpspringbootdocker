@@ -1,6 +1,6 @@
 steps:
   # Step 1: Build the JAR file using Maven
-  - name: 'maven:3.6.3-jdk-17' # Use the appropriate Maven image and JDK version
+  - name: 'maven:3.6.3-jdk-11' # Use the appropriate Maven image and JDK version
     entrypoint: 'mvn'
     args: ['clean', 'package']
   
