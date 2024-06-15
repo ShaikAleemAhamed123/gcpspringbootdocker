@@ -1,17 +1,11 @@
 steps:
-  # Step 1: Build the JAR file using a custom Docker image with JDK 17 and Maven
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'custom-maven-jdk17', '-f', 'Dockerfile.build', '.']
+  
 
-  - name: 'custom-maven-jdk17'
-    entrypoint: 'mvn'
-    args: ['clean', 'package']
-
-  # Step 2: Build the Docker image for the application
+  # Step 1: Build the Docker image for the application
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'asia-south1-docker.pkg.dev/gcpspringbootdocker/gcpspringboot/gcpspringbootdocker:latest', '.']
 
-  # Step 3: Push the Docker image to Artifact Registry
+  # Step 2: Push the Docker image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'asia-south1-docker.pkg.dev/gcpspringbootdocker/gcpspringboot/gcpspringbootdocker:latest']
 
