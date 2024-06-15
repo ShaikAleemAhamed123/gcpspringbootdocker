@@ -7,8 +7,21 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'asia-south1-docker.pkg.dev/gcpspringbootdocker/gcpspringboot/gcpspringbootdocker:latest']
 
+  # Step 3: Deploy to Cloud Run
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'gcpspringbootdocker'
+      - '--image=gcr.io/gcpspringbootdocker/gcpspringboot/gcpspringbootdocker:latest'
+      - '--platform=managed'
+      - '--region=asia-south1'
+      - '--allow-unauthenticated'  # Adjust as needed
+      - '--quiet'
+
 images:
   - 'asia-south1-docker.pkg.dev/gcpspringbootdocker/gcpspringboot/gcpspringbootdocker:latest'
   
 options:
   logging: CLOUD_LOGGING_ONLY
+
