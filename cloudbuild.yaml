@@ -9,3 +9,6 @@ steps:
 
 images:
   - 'asia-south1-docker.pkg.dev/gcpspringbootdocker/gcpspringboot/gcpspringbootdocker:latest'
+  
+options:
+  logging: CLOUD_LOGGING_ONLY
