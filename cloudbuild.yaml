@@ -13,7 +13,7 @@ steps:
       - 'run'
       - 'deploy'
       - 'gcpspringbootdocker'
-      - '--image=gcr.io/gcpspringbootdocker/gcpspringboot/gcpspringbootdocker:latest'
+      - '--image=asia-south1-docker.pkg.dev/gcpspringbootdocker/gcpspringboot/gcpspringbootdocker:latest'
       - '--platform=managed'
       - '--region=asia-south1'
       - '--allow-unauthenticated'  # Adjust as needed
